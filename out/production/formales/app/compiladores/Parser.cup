@@ -1,0 +1,41 @@
+package ejemplo;
+import java.io.*;
+import java_cup.runtime.*; 
+
+parser code
+{:
+	public static void main(String args[]) throws Exception{
+		//new parser(new Yylex(new FileInputStream(args[0]))).parse();
+		new parser(new Yylex(System.in)).parse();
+	}
+	public void syntax_error(Symbol s){
+		report_error("Error de sintaxis. Linea: " + (s.right + 1) +
+		" Columna: " + s.left + ". Texto: \"" + s.value + "\"", null);
+	}
+:}
+
+terminal String DIFERENTE, MAYORIGUAL, MENORIGUAL, MENOSNUM, MENOSUNO;
+terminal String MASNUM, MASUNO, IGUAL, MAYOR, MENOR, PYCOMA;
+terminal String COMA, PARIZQ, PARDER, LLAVEIZQ, LLAVEDER, FOR, INT, ID;
+terminal integer NUMERO;
+terminal String htmla,htmlb,heada,headb,titlea,titleb,bodya,bodyb,hr,pa,pb,h1a,h1b,ula,ulb,ila,ilb,ca,cb;
+
+
+non terminal Lista, Sentencia, E1, E2, E3, Expresion, Inicializacion, Condicion, Comp, Incremento, Inc;
+non terminal sentencia, html, lista;
+
+html  ::= htmla heada titlea ID titleb headb bodya Lista bodyb htmlb;
+
+Lista ::= Lista sentencia
+		| sentencia
+		;
+
+sentencia ::= hr {: System.out.println("Sentencia analizada para <hr>. Sin errores."); :}
+			| pa ID pb {: System.out.println("Sentencia analizada para <p>. Sin errores."); :}
+			| h1a ID h1b {: System.out.println("Sentencia analizada para <h1>. Sin errores."); :}
+			| ula lista ulb {: System.out.println("Sentencia analizada para lista. Sin errores."); :}
+			;
+lista  ::= lista ila ID ilb
+			| ila ID ilb
+			;
+

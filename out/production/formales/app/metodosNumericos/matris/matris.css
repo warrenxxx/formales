@@ -1,0 +1,13 @@
+.buttonAc{
+    -fx-background-color: blue;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;}
+.buttonCancel{
+    -fx-background-color: red;
+    -fx-background-radius: 10;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+}

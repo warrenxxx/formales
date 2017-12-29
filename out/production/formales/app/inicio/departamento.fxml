@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="lienso" minHeight="425.0" minWidth="883.0" prefHeight="425.0" prefWidth="883.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.paralela.Departamento">
+   <children>
+      <ImageView fitHeight="425.0" fitWidth="883.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@depa.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
