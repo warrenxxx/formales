@@ -20,9 +20,14 @@ public class matrices {
             for(int j=0;j<n;j++)
                 matris[i][j]=0;
     }
-    public matrices(int m,int n,double mat[][]){
-        this.m=m;
-        this.n=n;
+    public matrices(double mat[][]){
+        this.m=mat.length;
+        this.n=mat[0].length;
+        this.matris=mat;
+    }
+    public matrices(double m,double n,double mat[][]){
+        this.m=mat.length;
+        this.n=mat[0].length;
         this.matris=mat;
     }
 
@@ -103,7 +108,7 @@ public class matrices {
             mos();
         }
         return res;
-    }
+    }   
     public double ll(){
         for(int i=0;i<m;i++){
             double tmp=matris[i][i];
@@ -164,9 +169,50 @@ public class matrices {
         }
         System.out.println("");
     }
+    public static double [] sysgaus(double a[][],double b[]){
+        for(int i=0;i<a.length;i++){
+            for(int j=i+1;j<a.length;j++){
+                double tmp=-a[j][i]/a[i][i];
+                for(int k=0;k<a[0].length;k++){
+                    a[j][k]=a[j][k]+a[i][k]*tmp;
+                }
+                b[j]=b[i]*tmp+b[j];
+            }
+        }
+        double res[]=new double[b.length];
+        for(int i=0;i<res.length;i++)res[i]=0;
+        for(int i=b.length-1;i>=0;i--  ){
+            double suma=0;
+            for(int j=0;j<b.length;j++){
+                suma=suma+a[i][j]*res[j];
+            }
+            System.out.println(suma+" "+b[i]+" "+a[i][i]);
+            res[i]=(b[i]-suma)/a[i][i];
+            System.out.println("");
+        }
+        return res;
+    }
+
+    public static double [] sysgaus2(double a[][],double b[],int c){
+        double aux[][]=a.clone();
+        double aux2[]=b.clone();
+        for(int i=0;i<a.length;i++)
+            for(int j=0;j<a.length;j++){
+                if(i==j)continue;
+                double tmp=-a[j][i]/a[i][i];
+                for(int k=0;k<a[0].length;k++){
+                    a[j][k]=a[j][k]+a[i][k]*tmp;
+                }
+                b[j]=b[i]*tmp+b[j];
+                tmp=a[i][i];
+                for(int k=0;k<a[0].length;k++)
+                    a[i][k]=a[i][k]/tmp;
+                b[i]=b[i]/tmp;
+            }
+        return b;
+    }
 
     public static void main(String argc[]){
-        matrices m=new matrices(3,3,new double[][]{{2,1,-3},{-1,3,2},{3,1,-3}});
-        m.inversa();
+
     }
 }

@@ -59,14 +59,14 @@ public class VistaGramatica  extends Parent implements Initializable {
         m1.addListener(new ListChangeListener<modela>() {
             @Override
             public void onChanged(Change<? extends modela> c) {
-                m2.clear();
+             /*   m2.clear();
                 gramatica a=new gramatica();
                 m1.forEach(e->{
-                    a.add(e.getKey().charAt(0),e.getValue());
+                    a.add(e.getKey(),e.getValue());
                 });
                 m1.forEach(e->{
 
-                });
+                });*/
             }
         });
 

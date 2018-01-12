@@ -81,6 +81,12 @@ public class inicio extends Application {
             if(b.getSelectionModel().getSelectedIndex()==3){
                 g3.setmatris(aa.divicion(bb));
             }
+            if(b.getSelectionModel().getSelectedIndex()==3){
+                g3.setmatris(aa.divicion(bb));
+            }
+            if(b.getSelectionModel().getSelectedIndex()==3){
+                g3.setmatris(aa.divicion(bb));
+            }
         });
 
         VBox v=new VBox();
